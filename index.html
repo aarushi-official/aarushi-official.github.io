@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarushi - Biomedical Engineering & Biotechnology Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 5rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .education-card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .institution {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .duration {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .grade-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .grade-item:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-bubble {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-bubble:hover {
+            transform: scale(1.1) rotateZ(5deg);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .skill-bubble:hover::before {
+            left: 100%;
+        }
+
+        .skill-bubble.expanded {
+            background: #4CAF50;
+            transform: scale(1.2);
+            z-index: 10;
+        }
+
+        /* Certificates Section */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .certificate-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .certificate-card.expanded {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+            z-index: 20;
+            border-color: #4CAF50;
+        }
+
+        .certificate-card h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .certificate-card .institution {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Research Experience */
+        .research-timeline {
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .research-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: translateX(-50%);
+        }
+
+        .research-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .research-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .research-content {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 0 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .research-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .research-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-timeline::before {
+                left: 20px;
+            }
+
+            .research-item {
+                flex-direction: column !important;
+                margin-left: 40px;
+            }
+
+            .research-item::after {
+                left: 20px;
+            }
+
+            .research-content {
+                margin: 0;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .bubble-tooltip {
+            position: absolute;
+            background: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            white-space: nowrap;
+        }
+
+        .bubble-tooltip.show {
+            opacity: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Aarushi</h1>
+                <p class="subtitle">Decoding Biological Precision for Biomedical Innovation</p>
+                <p class="description">
+                    From observing nature's perfect efficiency to engineering solutions for human health - 
+                    I bridge the gap between biological discovery and clinical impact through cutting-edge biosensors, 
+                    computational modeling, and personalized cancer diagnostics.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>aarushi.official24@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+91 9315722834</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Bhubaneshwar, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <span>LinkedIn: linkedin.com/in/aarushi-biotech</span>
+                    </div>
+                </div>
+                <a href="#education" class="cta-button">Explore My Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section fade-in" id="education">
+        <div class="container">
+            <h2>Academic Journey</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>MSc in Biotechnology</h3>
+                    <div class="institution">Kalinga Institute of Industrial Technology (KIIT)</div>
+                    <div class="duration">September 2024 - May 2026 | Bhubaneshwar, India</div>
+                    <p>Specializing in biosensors, cancer biology, and computational modeling. Currently working on dissertation with Dr. Vinay Patel at IIT Kharagpur.</p>
+                    <div class="grades-grid">
+                        <div class="grade-item">
+                            <strong>1st Semester</strong><br>
+                            CGPA: 9.23
+                        </div>
+                        <div class="grade-item">
+                            <strong>2nd Semester</strong><br>
+                            CGPA: 9.04
+                        </div>
+                        <div class="grade-item">
+                            <strong>Overall CGPA</strong><br>
+                            9.14
+                        </div>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <h3>BSc (Hons.) in Zoology</h3>
+                    <div class="institution">University of Delhi | Acharya Narendra Dev College</div>
+                    <div class="duration">July 2017 - October 2020 | Delhi, India</div>
+                    <p>Foundation in biological systems, cellular mechanisms, and molecular biology. Specialized coursework in biochemistry, genetics, and developmental biology.</p>
+                    <div class="grades-grid">
+                        <div class="grade-item">
+                            <strong>Final CGPA</strong><br>
+                            7.297
+                        </div>
+                        <div class="grade-item">
+                            <strong>Division</strong><br>
+                            First Class
+                        </div>
+                        <div class="grade-item">
+                            <strong>Percentage</strong><br>
+                            69.32%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section fade-in">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-bubble" data-category="programming">Python</div>
+                <div class="skill-bubble" data-category="programming">MATLAB</div>
+                <div class="skill-bubble" data-category="programming">SQL</div>
+                <div class="skill-bubble" data-category="programming">LaTeX</div>
+                <div class="skill-bubble" data-category="computational">Machine Learning</div>
+                <div class="skill-bubble" data-category="computational">Bioinformatics</div>
+                <div class="skill-bubble" data-category="computational">Computational Biology</div>
+                <div class="skill-bubble" data-category="computational">QIIME 2</div>
+                <div class="skill-bubble" data-category="molecular">Molecular Docking</div>
+                <div class="skill-bubble" data-category="molecular">BLAST: NCBI</div>
+                <div class="skill-bubble" data-category="molecular">Primer3web</div>
+                <div class="skill-bubble" data-category="molecular">SnapGene</div>
+                <div class="skill-bubble" data-category="lab">Microbiology Lab</div>
+                <div class="skill-bubble" data-category="lab">Biochemistry Lab</div>
+                <div class="skill-bubble" data-category="lab">Cell Biology Lab</div>
+                <div class="skill-bubble" data-category="lab">Recombinant DNA Technology</div>
+                <div class="skill-bubble" data-category="medical">Medical Coding</div>
+                <div class="skill-bubble" data-category="medical">ELISA</div>
+                <div class="skill-bubble" data-category="medical">Immunofluorescence</div>
+                <div class="skill-bubble" data-category="tools">bioRender</div>
+                <div class="skill-bubble" data-category="tools">Mendeley</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Experience -->
+    <section class="section fade-in">
+        <div class="container">
+            <h2>Research Experience</h2>
+            <div class="research-timeline">
+                <div class="research-item">
+                    <div class="research-content">
+                        <h3>Book Chapter Collaboration</h3>
+                        <h4>KIIT University | September 2024 - Present</h4>
+                        <p><strong>Project:</strong> "Mushrooms at the cradle of sustainable development and circular economy"</p>
+                        <p><strong>Supervisor:</strong> Dr. Gopal Chowdhary</p>
+                        <p>Collaborating on interdisciplinary research exploring revolutionary applications of mushrooms in sustainable development. This project has enhanced my scientific writing and communication skills while deepening understanding of circular economy principles.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-content">
+                        <h3>Master's Dissertation</h3>
+                        <h4>IIT Kharagpur | Upcoming</h4>
+                        <p><strong>Focus:</strong> Biosensors and Cancer Biology</p>
+                        <p><strong>Supervisor:</strong> Dr. Vinay Patel</p>
+                        <p>Integrating molecular techniques with computational modeling to develop novel biosensor technologies for cancer diagnostics. The research aims to bridge fundamental discoveries with clinical applications.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-content">
+                        <h3>Summer Internship</h3>
+                        <h4>Clinical Immunology | May 2025 - July 2025</h4>
+                        <p>Gained hands-on experience in clinical immunological procedures including ELISA, immunofluorescence, and various immunoassay techniques used in patient diagnosis. This experience provided crucial insight into translational research applications.</p>
+                    </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-content">
+                        <h3>Environmental Research Project</h3>
+                        <h4>University of Delhi</h4>
+                        <p><strong>Project:</strong> BOD Analysis of Yamuna River Water Pollution</p>
+                        <p><strong>Supervisor:</strong> Dr. Sarita Kumar</p>
+                        <p>Conducted comprehensive research on Biological Oxygen Demand levels in the Yamuna River to assess water pollution's impact on ecosystem health and biodiversity. This project established my foundation in environmental biotechnology and analytical techniques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="section fade-in">
+        <div class="container">
+            <h2>Certifications & Professional Development</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card" data-cert="bioprocess">
+                    <h4>Introduction to Industrial Bioprocess Development</h4>
+                    <p class="institution">Technical University of Denmark</p>
+                </div>
+                <div class="certificate-card" data-cert="industrial-biotech">
+                    <h4>Industrial Biotechnology</h4>
+                    <p class="institution">The University of Manchester</p>
+                </div>
+                <div class="certificate-card" data-cert="rna-biology">
+                    <h4>RNA Biology with Eterna</h4>
+                    <p class="institution">Stanford University</p>
+                </div>
+                <div class="certificate-card" data-cert="biomedical-viz">
+                    <h4>Biomedical Visualisation</h4>
+                    <p class="institution">University of Glasgow</p>
+                </div>
+                <div class="certificate-card" data-cert="trustworthy-ai">
+                    <h4>Trustworthy AI for Healthcare Management</h4>
+                    <p class="institution">Politecnico di Milano</p>
+                </div>
+                <div class="certificate-card" data-cert="algae-biotech">
+                    <h4>Algae Biotechnology</h4>
+                    <p class="institution">University of San Diego</p>
+                </div>
+                <div class="certificate-card" data-cert="stem-cells">
+                    <h4>The Science of Stem Cells</h4>
+                    <p class="institution">American Museum of Natural History</p>
+                </div>
+                <div class="certificate-card" data-cert="drug-discovery">
+                    <h4>Introduction to Small Molecule Drug Discovery & Development</h4>
+                    <p class="institution">University of Cape Town</p>
+                </div>
+                <div class="certificate-card" data-cert="machine-learning">
+                    <h4>Supervised Machine Learning: Regression and Classification</h4>
+                    <p class="institution">Stanford University</p>
+                </div>
+                <div class="certificate-card" data-cert="scientific-writing">
+                    <h4>NIeCer 103: Scientific Writing in Health Research</h4>
+                    <p class="institution">ICMR-National Institute of Epidemiology</p>
+                </div>
+                <div class="certificate-card" data-cert="medical-coding">
+                    <h4>Introduction to Medical Coding</h4>
+                    <p class="institution">Professional Certification</p>
+                </div>
+                <div class="certificate-card" data-cert="chemicals-health">
+                    <h4>Chemicals and Health</h4>
+                    <p class="institution">Johns Hopkins University</p>
+                </div>
+                <div class="certificate-card" data-cert="research-methods">
+                    <h4>Understanding Research Methods</h4>
+                    <p class="institution">University of London</p>
+                </div>
+                <div class="certificate-card" data-cert="writing-sciences">
+                    <h4>Writing in the Sciences</h4>
+                    <p class="institution">Stanford University</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Vision -->
+    <section class="section fade-in">
+        <div class="container">
+            <h2>Future Vision: PhD Research Goals</h2>
+            <div style="max-width: 900px; margin: 0 auto; text-align: left;">
+                <div class="research-content">
+                    <h3>Microfluidic "Organonanochip" Platform Development</h3>
+                    <p><strong>Target Program:</strong> PhD in Biomedical Engineering at University of Oklahoma</p>
+                    <p><strong>Prospective Supervisor:</strong> Dr. Rupa Haldavnekar</p>
+                    
+                    <p>My research vision centers on developing revolutionary microfluidic platforms that co-culture primary tumor cells, immune cells, and fibroblasts to recreate the earliest moments of tumorigenesis. By coupling this with in-chip Raman spectroscopy and self-functionalized nanoprobes, I aim to discover dynamic, interaction-based biomarkers that traditional static assays miss.</p>
+                    
+                    <h4 style="color: #667eea; margin-top: 2rem;">Key Research Objectives:</h4>
+                    <ul style="margin-left: 2rem; line-height: 1.8;">
+                        <li>Design modular, multiplexed biosensor platforms for specific cancer subtypes</li>
+                        <li>Integrate machine learning as an adaptive diagnostic "eye" within devices</li>
+                        <li>Develop patient-specific markers through real-time cell-cell interaction analysis</li>
+                        <li>Translate laboratory discoveries into robust clinical tools</li>
+                    </ul>
+                    
+                    <p style="margin-top: 2rem;">This interdisciplinary approach combines my expertise in molecular biology, computational modeling, and bioengineering to make truly personalized cancer care a daily reality for patients worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bubble-tooltip" id="tooltip"></div>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Scroll animations
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                if (isElementInViewport(el) || window.scrollY + window.innerHeight > el.offsetTop) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimations);
+        handleScrollAnimations(); // Initial check
+
+        // Skill bubbles interaction
+        const skillBubbles = document.querySelectorAll('.skill-bubble');
+        const tooltip = document.getElementById('tooltip');
+
+        skillBubbles.forEach(bubble => {
+            bubble.addEventListener('mouseenter', function(e) {
+                const category = this.getAttribute('data-category');
+                const categoryDescriptions = {
+                    'programming': 'Programming & Development Tools',
+                    'computational': 'Computational Analysis & Modeling',
+                    'molecular': 'Molecular Biology Tools',
+                    'lab': 'Laboratory Techniques',
+                    'medical': 'Medical & Clinical Applications',
+                    'tools': 'Research & Visualization Tools'
+                };
+
+                tooltip.textContent = categoryDescriptions[category] || 'Specialized Skill';
+                tooltip.style.left = e.pageX + 10 + 'px';
+                tooltip.style.top = e.pageY - 40 + 'px';
+                tooltip.classList.add('show');
+
+                this.classList.add('expanded');
+            });
+
+            bubble.addEventListener('mouseleave', function() {
+                tooltip.classList.remove('show');
+                this.classList.remove('expanded');
+            });
+
+            bubble.addEventListener('click', function() {
+                // Toggle expanded state on click
+                this.classList.toggle('expanded');
+                
+                // Remove expanded class from other bubbles
+                skillBubbles.forEach(otherBubble => {
+                    if (otherBubble !== this) {
+                        otherBubble.classList.remove('expanded');
+                    }
+                });
+            });
+        });
+
+        // Certificate cards interaction
+        const certificateCards = document.querySelectorAll('.certificate-card');
+
+        certificateCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('expanded');
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('expanded');
+            });
+
+            card.addEventListener('click', function() {
+                const certId = this.getAttribute('data-cert');
+                // This is where you would open the certificate modal/viewer
+                // For now, we'll just show an alert
+                alert(`Certificate viewer for "${this.querySelector('h4').textContent}" will be implemented here. You can add the certificate image/PDF later.`);
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Research timeline animation
+        function animateTimeline() {
+            const researchItems = document.querySelectorAll('.research-item');
+            researchItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateX(50px)';
+                    item.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateX(0)';
+                    }, 100);
+                }, index * 200);
+            });
+        }
+
+        // Trigger timeline animation when section comes into view
+        const timelineSection = document.querySelector('.research-timeline');
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateTimeline();
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (timelineSection) {
+            timelineObserver.observe(timelineSection);
+        }
+
+        // Add floating particles animation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = 'rgba(255, 255, 255, 0.5)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1';
+            
+            document.querySelector('.hero').appendChild(particle);
+            
+            const animation = particle.animate([
+                { transform: 'translateY(0px) rotate(0deg)', opacity: 0 },
+                { transform: `translateY(-${window.innerHeight + 100}px) rotate(360deg)`, opacity: 1 },
+                { transform: `translateY(-${window.innerHeight + 200}px) rotate(720deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            });
+            
+            animation.addEventListener('finish', () => {
+                particle.remove();
+            });
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 300);
+
+        // Add typing effect to hero subtitle
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // Add blinking cursor effect
+                    element.innerHTML += '<span style="animation: blink 1s infinite;">|</span>';
+                }
+            }
+            
+            type();
+        }
+
+        // Add CSS for blinking cursor
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Start typing effect after loading
+        setTimeout(() => {
+            const subtitle = document.querySelector('.hero .subtitle');
+            const originalText = subtitle.textContent;
+            typeWriter(subtitle, originalText, 75);
+        }, 2000);
+
+        // Add parallax effect to hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero::before');
+            const rate = scrolled * -0.5;
+            
+            if (parallax) {
+                document.querySelector('.hero').style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Enhanced certificate card interactions
+        certificateCards.forEach(card => {
+            // Add ripple effect on click
+            card.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = 60;
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.background = 'rgba(102, 126, 234, 0.5)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Add progress bars for grades
+        function animateGrades() {
+            const gradeItems = document.querySelectorAll('.grade-item');
+            gradeItems.forEach(item => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animation = 'slideInUp 0.6s ease forwards';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                observer.observe(item);
+            });
+        }
+
+        // Add slide animation CSS
+        const slideStyle = document.createElement('style');
+        slideStyle.textContent = `
+            @keyframes slideInUp {
+                from {
+                    transform: translateY(30px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(slideStyle);
+
+        animateGrades();
+
+        // Add contact info hover effects
+        const contactItems = document.querySelectorAll('.contact-item');
+        contactItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const text = this.querySelector('span:last-child').textContent;
+                
+                if (text.includes('@')) {
+                    // Email
+                    window.open(`mailto:${text}`, '_blank');
+                } else if (text.includes('+91')) {
+                    // Phone
+                    window.open(`tel:${text}`, '_blank');
+                } else if (text.includes('linkedin')) {
+                    // LinkedIn
+                    window.open(`https://${text}`, '_blank');
+                } else {
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(text).then(() => {
+                        this.style.background = 'rgba(76, 175, 80, 0.3)';
+                        setTimeout(() => {
+                            this.style.background = 'rgba(255,255,255,0.1)';
+                        }, 1000);
+                    });
+                }
+            });
+        });
+
+        console.log("🧬 Portfolio initialized successfully! Ready to showcase the journey from biological precision to biomedical innovation.");
+    </script>
+</body>
+</html>
